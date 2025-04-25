@@ -1,0 +1,53 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Compilar Projeto Java",
+			"type": "shell",
+			"command": "javac",
+			"args": [
+				"-cp",
+				"src/postgresql-42.7.5.jar;src",
+				"-d",
+				"out",
+				"src/Main.java",
+				"src/conexao/*.java",
+				"src/dao/*.java",
+				"src/Interface/*.java",
+				"src/model/*.java",
+				"src/service/*.java",
+				"src/tabelas/*.java"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"detail": "Compila todos os arquivos .java do projeto"
+		},
+		{
+			"label": "Executar Projeto Java",
+			"type": "shell",
+			"command": "java",
+			"args": [
+			  "-cp",
+			  "src/postgresql-42.7.5.jar;out",
+			  "Main"
+			],
+			"options": {
+			  "shell": {
+				"executable": "cmd.exe",
+				"args": ["/d", "/c"]
+			  }
+			},
+			"group": {
+			  "kind": "build",
+			  "isDefault": true
+			},
+			"problemMatcher": [],
+			"detail": "Executa a classe Main com classpath configurado"
+		  }
+		  
+	]
+  }
+  
