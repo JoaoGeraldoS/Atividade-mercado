@@ -40,8 +40,7 @@ public class ClienteDAO {
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
                 clientes.add(cliente);
-
-            };
+            }
 
         } catch (Exception e){
             throw new RuntimeException("Nenhum cliente encontrado");

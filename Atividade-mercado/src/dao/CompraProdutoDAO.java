@@ -24,7 +24,6 @@ public class CompraProdutoDAO {
         }
     }
 
-
     public List<CompraProduto> listarProdutosPorCompra(int compraId) {
         String sql = "SELECT * FROM compra_produto WHERE compra_id = ?";
         List<CompraProduto> produtosCompra = new ArrayList<>();

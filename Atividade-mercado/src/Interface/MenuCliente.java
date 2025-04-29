@@ -4,17 +4,15 @@ import dao.ClienteDAO;
 import model.Cliente;
 import java.util.Scanner;
 
-public class MenuCliente {
+public class MenuCliente extends GenericsMenu{
     private final Cliente cliente = new Cliente();
     private final ClienteDAO clienteDAO = new ClienteDAO();
 
     public void menuCliente(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\n==== MENU DE CLIENTE ====\n");
-        System.out.println("1- Adicionar cliente");
-        System.out.println("2 - Ver clientes");
-        System.out.println("3 - Deletar cliente");
+        genericMenuCliente();
+
         System.out.print("Digite a opção: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();
@@ -43,6 +41,9 @@ public class MenuCliente {
 
                 clienteDAO.apagarCliente(id);
             }
+
+            case 4 -> System.out.println("Saindo...");
+
             default -> System.out.println("Erro, entrada invalida!");
 
         }

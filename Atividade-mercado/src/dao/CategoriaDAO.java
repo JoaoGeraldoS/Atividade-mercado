@@ -48,8 +48,7 @@ public class CategoriaDAO {
                 categoria.setNome(rs.getString("nome"));
 
                 categorias.add(categoria);
-
-            };
+            }
 
         } catch (Exception e){
             throw new RuntimeException("Nenhuma categoria encontrado");

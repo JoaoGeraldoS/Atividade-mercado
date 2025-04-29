@@ -7,15 +7,13 @@ import model.Categoria;
 
 import java.util.Scanner;
 
-public class MenuProduto {
+public class MenuProduto extends GenericsMenu{
     public void menuProduto(){
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US);
 
-        System.out.println("\n==== MENU DE PRODUTO ====\n");
-        System.out.println("1- Adicionar produto\n\n");
-        System.out.println("2 - Ver produtos");
-        System.out.println("3 - Deletar produto");
+        genericMenuProduto();
+
         System.out.print("\nDigite a opção: ");
         int opcao = scanner.nextInt();
 
@@ -43,12 +41,12 @@ public class MenuProduto {
             }
             case 2 -> produtoDAO.verProduto().forEach(System.out::println);
 
-
             case 3 -> {
                 System.out.print("Digite o id do produto: ");
                 produtoDAO.apagarProduto(scanner.nextInt());
-
             }
+
+            case 4 -> System.out.println("Saindo...");
 
             default -> System.out.println("Entrada invalida!");
 

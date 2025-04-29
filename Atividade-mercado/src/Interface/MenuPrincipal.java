@@ -1,48 +1,62 @@
 package Interface;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-public class MenuPrincipal {
+public class MenuPrincipal extends GenericsMenu{
 
-    private Scanner scanner = new Scanner(System.in);
+    private final Map<Integer, Runnable> opcoes = new HashMap<>();
+    private final Scanner scanner = new Scanner(System.in);
+
+    public MenuPrincipal() {
+        opcoes.put(1, this::cliente);
+        opcoes.put(2, this::categoria);
+        opcoes.put(3, this::produtos);
+        opcoes.put(4, this::comprar);
+    }
 
     public void menuPrincipal() {
+        int opcao;
+        do {
+            genericMenuPrincipal();
 
-        while (true) {
-            System.out.println("\n==== MENU DE PRINCIPAL ====\n");
-            System.out.println("1 - Clientes");
-            System.out.println("2 - Categorias");
-            System.out.println("3 - Produtos");
-            System.out.println("4 - Comprar");
-            System.out.println("5 - Sair");
             System.out.print("Digite a opção: ");
-            int opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
+            scanner.nextLine();
 
-
-            switch (opcao) {
-                case 1 -> {
-                    MenuCliente menuCliente = new MenuCliente();
-                    menuCliente.menuCliente();
-                }
-                case 2 -> {
-                    MenuCategoria menuCategoria = new MenuCategoria();
-                    menuCategoria.menuCategria();
-                }
-                case 3 -> {
-                    MenuProduto menuProduto = new MenuProduto();
-                    menuProduto.menuProduto();
-                }
-                case 4 -> {
-                    MenuCompra menuCompra = new MenuCompra();
-                    menuCompra.menuCompra();
-                }
-
-                case 5 -> {
-                    return;
-                }
-
-                default -> throw new IllegalStateException("Valor invalido " + opcao);
+            if (opcao == 5) {
+                System.out.println("Saindo...");
+                return;
             }
-        }
+
+            Runnable runnable = opcoes.get(opcao);
+            if (runnable != null) {
+                runnable.run();
+            } else {
+                System.out.println("Entrada invalida!");
+            }
+
+        } while (opcao != 0);
+    }
+
+    private void cliente() {
+        MenuCliente menuCliente = new MenuCliente();
+        menuCliente.menuCliente();
+    }
+
+    private void categoria() {
+        MenuCategoria menuCategoria = new MenuCategoria();
+        menuCategoria.menuCategria();
+    }
+
+    private void produtos() {
+        MenuProduto menuProduto = new MenuProduto();
+        menuProduto.menuProduto();
+    }
+
+    private void comprar() {
+        MenuCompra menuCompra = new MenuCompra();
+        menuCompra.menuCompra();
     }
 }

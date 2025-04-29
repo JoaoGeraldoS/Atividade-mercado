@@ -58,7 +58,6 @@ public class ProdutoDAO {
                 produto.setCategoria(categoria);
 
                 produtos.add(produto);
-
             }
 
         } catch (Exception e){
@@ -79,7 +78,6 @@ public class ProdutoDAO {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("id"));
                 produto.setNome(rs.getString("nome"));
-                // preencha outros campos se houver
                 return produto;
             }
         } catch (SQLException e) {

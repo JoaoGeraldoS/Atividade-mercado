@@ -5,16 +5,15 @@ import model.Categoria;
 
 import java.util.Scanner;
 
-public class  MenuCategoria {
+public class  MenuCategoria extends GenericsMenu{
 
     public void menuCategria() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("\nMenu Categoria\n");
-        System.out.println("1- Adicionar categoria\n2 - Ver categorias\n3 - Deletar categoria");
+        genericMenuCategoria();
+
         System.out.print("\nDigite a opção: ");
         int opcao = scanner.nextInt();
-
 
         CategoriaDAO categoriaDAO = new CategoriaDAO();
 
@@ -35,8 +34,10 @@ public class  MenuCategoria {
                 int id = scanner.nextInt();
                 categoriaDAO.apagarCategoria(id);
             }
+
+            case 4 -> System.out.println("Saindo...");
+
             default -> System.out.println("Entrada invalida!");
         }
-
     }
 }
